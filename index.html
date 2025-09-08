@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Invitación • Lissette & Benjamín</title>
+  <meta name="description" content="Invitación móvil para la boda de Lissette y Benjamín. RSVP, mapa, galería y más." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1012;
+      --card:#15171a;
+      --soft:#1b1e22;
+      --text:#f5f5f5;
+      --muted:#c9c9cc;
+      --gold:#c9a227;
+      --accent:#e9d8a6;
+      --radius:18px;
+      --shadow:0 8px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .wrap{max-width:980px;margin:0 auto;padding:18px}
+
+    /* Hero */
+    header.hero{position:relative;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.06);
+      background: radial-gradient(120% 120% at 70% 10%, rgba(201,162,39,.15), transparent 40%),
+                  radial-gradient(120% 120% at 0% 90%, rgba(201,162,39,.08), transparent 50%);
+    }
+    .hero-inner{padding:28px 18px 18px;display:grid;gap:18px;align-items:center}
+    .hero-card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+    .hero-photo{aspect-ratio:10/13;object-fit:cover;width:100%}
+    .title-group{padding:18px 18px 22px;text-align:center}
+    h1.name{font-family:"Playfair Display",serif;font-size:clamp(30px,6.5vw,46px);margin:0;letter-spacing:.5px}
+    .amp{color:var(--gold)}
+    .sub{margin-top:8px;color:var(--muted);font-size:.98rem}
+    .chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:10px}
+    .chip{padding:8px 12px;border-radius:999px;background:#14161a;border:1px solid rgba(255,255,255,.08);color:var(--muted);font-size:.86rem}
+
+    /* Buttons */
+    .btn{appearance:none;cursor:pointer;border-radius:12px;border:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(180deg,#1a1c20,#131519);color:#fff;padding:12px 14px;font-weight:600;
+      display:inline-flex;align-items:center;gap:10px;box-shadow:var(--shadow);transition:transform .08s ease,opacity .2s}
+    .btn:active{transform:translateY(1px)}
+    .btn.gold{background:linear-gradient(180deg,#d8b652,#b9921f);border:none;color:#15120a}
+    .btn-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+
+    /* Sections */
+    section{padding:26px 0}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+    h2.sec{font-family:"Playfair Display",serif;font-size:clamp(22px,5.2vw,30px);margin:0 0 12px}
+    p{color:#dcdde1;line-height:1.55}
+    .muted{color:var(--muted)}
+    .grid{display:grid;gap:14px}
+    @media (min-width:780px){.hero-inner{grid-template-columns:420px 1fr}.grid.cols-2{grid-template-columns:1fr 1fr}}
+
+    /* Countdown */
+    .countdown{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    .timebox{min-width:74px;padding:12px;border-radius:14px;background:var(--soft);text-align:center;border:1px solid rgba(255,255,255,.06)}
+    .timebox .num{font-weight:700;font-size:1.3rem}
+    .timebox .lab{font-size:.78rem;color:var(--muted)}
+
+    /* Details */
+    .details{display:grid;gap:10px}
+    .detail{display:flex;gap:12px;align-items:flex-start;background:var(--soft);border:1px solid rgba(255,255,255,.06);padding:12px;border-radius:12px}
+    .detail .icon{font-size:20px;line-height:1;color:var(--gold)}
+
+    /* RSVP */
+    form.rsvp{display:grid;gap:10px}
+    .field{display:grid;gap:6px}
+    .field input,.field select,.field textarea{width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:#121418;color:#f1f1f1}
+    .help{font-size:.82rem;color:var(--muted)}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    @media (min-width:680px){.gallery{grid-template-columns:repeat(3,1fr)}}
+    .ph{position:relative;overflow:hidden;border-radius:12px;background:#0d0f12;border:1px solid rgba(255,255,255,.06)}
+    .ph img{width:100%;height:100%;object-fit:cover;aspect-ratio:1/1}
+
+    /* Footer & mobile dock */
+    footer{padding:32px 0 40px;text-align:center;color:var(--muted)}
+    .dock{position:sticky;bottom:12px;display:flex;gap:10px;justify-content:center}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-card">
+        <!-- Coloca Novios1.jpg en la misma carpeta que este HTML -->
+        <img class="hero-photo" src="Novios1.jpg" alt="Lissette y Benjamín" loading="eager" />
+        <div class="title-group">
+          <h1 class="name">Lissette <span class="amp">&</span> Benjamín</h1>
+          <div class="sub">Nuestra historia comienza aquí</div>
+          <div class="chips">
+            <span class="chip" id="dateChip">Fecha: 4 de octubre de 2025</span>
+            <span class="chip">Dress code: elegante</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h2 class="sec">Invitación</h2>
+          <p>Con enorme alegría te invitamos a celebrar nuestra boda. Será un día para compartir amor, risas y recuerdos inolvidables.</p>
+
+          <div class="details" style="margin-top:12px">
+            <div class="detail"><div class="icon">📍</div>
+              <div>
+                <strong>Lugar</strong>
+                <div class="muted" id="addressText">
+                  Boulevard Miramundo, Porción segregada de Finca El Matazano a 400m de Centro de Investigación CLUB SALVADOREÑO, CLUB SALVADOREÑO NUEVO CUSCATLÁN
+                </div>
+              </div>
+            </div>
+            <div class="detail"><div class="icon">🕒</div>
+              <div>
+                <strong>Horario</strong>
+                <div class="muted" id="timeText">7:00 PM</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="btn-row" style="margin-top:14px">
+            <a class="btn gold" id="btnMaps" href="#" target="_blank" rel="noopener">Abrir en Google Maps</a>
+            <a class="btn" id="btnWaze" href="#" target="_blank" rel="noopener">Abrir en Waze</a>
+          </div>
+
+          <div class="dock" style="margin-top:14px">
+            <button class="btn" id="btnCalendar">Agregar a mi calendario</button>
+            <a class="btn" id="btnShare" href="#">Compartir</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="sec">Cuenta regresiva</h2>
+          <div class="countdown" id="countdown">
+            <div class="timebox"><div class="num" id="d">--</div><div class="lab">días</div></div>
+            <div class="timebox"><div class="num" id="h">--</div><div class="lab">horas</div></div>
+            <div class="timebox"><div class="num" id="m">--</div><div class="lab">min</div></div>
+            <div class="timebox"><div class="num" id="s">--</div><div class="lab">seg</div></div>
+          </div>
+          <p class="help" style="text-align:center;margin-top:10px">Sábado 4 de octubre de 2025, 7:00 PM</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="historia">
+      <div class="card">
+        <h2 class="sec">Nuestra historia</h2>
+        <p>Un recorrido por los momentos que nos trajeron hasta aquí.</p>
+        <div class="grid cols-2" style="margin-top:10px">
+          <div class="detail"><div class="icon">💫</div><div><strong>Cómo nos conocimos</strong><div class="muted">(Agrega 2–3 líneas luego)</div></div></div>
+          <div class="detail"><div class="icon">💍</div><div><strong>La propuesta</strong><div class="muted">(Agrega 1–2 líneas luego)</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rsvp">
+      <div class="card">
+        <h2 class="sec">Confirma tu asistencia</h2>
+        <form class="rsvp" id="rsvpForm">
+          <div class="field">
+            <label for="nombre">Nombre completo</label>
+            <input id="nombre" name="nombre" required placeholder="Escribe tu nombre" />
+          </div>
+          <div class="field">
+            <label for="asistencia">¿Asistirás?</label>
+            <select id="asistencia" name="asistencia" required>
+              <option value="">Selecciona…</option>
+              <option>Sí, allí estaré</option>
+              <option>No podré asistir</option>
+            </select>
+          </div>
+          <div class="field">
+           </div>
+          <button class="btn gold" type="submit">Enviar RSVP</button>
+          <p class="help">Por ahora tu confirmación se guarda localmente (prototipo). Luego conectamos a una base real.</p>
+          <div id="rsvpOk" class="help" style="display:none;color:#b7f397">¡Gracias! Hemos registrado tu confirmación.</div>
+          <div class="btn-row">
+            <a class="btn" id="btnWhats" href="#" target="_blank" rel="noopener">Confirmar por WhatsApp</a>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="galeria">
+      <div class="card">
+        <h2 class="sec">Galería</h2>
+        <p>Después del evento, aquí podrás ver y descargar tus fotos favoritas.</p>
+        <div class="gallery" style="margin-top:10px">
+          <!-- Foto inicial -->
+          <figure class="ph"><img src="Novios1.jpg" alt="Lissette & Benjamín" loading="lazy"></figure>
+          <!-- Placeholders: agrega más imágenes en esta cuadrícula -->
+          <figure class="ph"><img src="" alt="" loading="lazy"></figure>
+          <figure class="ph"><img src="" alt="" loading="lazy"></figure>
+          <figure class="ph"><img src="" alt="" loading="lazy"></figure>
+        </div>
+        <p class="help" style="margin-top:8px">Tip: podremos filtrar por mesa o familia más adelante.</p>
+      </div>
+    </section>
+
+    <section id="sobres">
+      <div class="card">
+        <h2 class="sec">Muestras de cariño</h2>
+        <p>El mejor regalo es tu presencia en nuestra boda ✨. Pero si deseas bendecirnos con una muestra de cariño, agradecemos que sea en un sobre el día del evento.</p>
+        <p class="muted">Gracias de corazón por ser parte de esta nueva etapa en nuestras vidas.</p>
+      </div>
+    </section>
+
+    <section id="mensajes">
+      <div class="card">
+        <h2 class="sec">Deja un mensaje</h2>
+        <p>Cuéntanos algo bonito. Más adelante activaremos un muro con moderación.</p>
+        <div class="btn-row"><a class="btn" href="#" id="btnMensaje">Escribir mensaje (próximamente)</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>Gracias por ser parte de este momento ✨</div>
+      <div class="muted" style="margin-top:6px">Lissette & Benjamín</div>
+    </div>
+  </footer>
+
+  <script>
+    // ==== Datos reales ====
+    const ADDRESS = "Boulevard Miramundo, Porción segregada de Finca El Matazano a 400m de Centro de Investigación CLUB SALVADOREÑO, CLUB SALVADOREÑO NUEVO CUSCATLÁN";
+    // 4 oct 2025, 7:00 PM, UTC-6 (El Salvador): tzOffsetMin=360
+    const WEDDING = { year: 2025, month: 10, day: 4, hour: 19, minute: 0, tzOffsetMin: 360 };
+    const RSVP_WHATS = "https://wa.me/50379320879?text=" + encodeURIComponent("¡Hola! Quiero confirmar mi asistencia a la boda de Lissette y Benjamín.");
+
+    // ==== Map links & WhatsApp ====
+    const maps = document.getElementById('btnMaps');
+    const waze = document.getElementById('btnWaze');
+    const whats = document.getElementById('btnWhats');
+    maps.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(ADDRESS);
+    waze.href = "https://waze.com/ul?q=" + encodeURIComponent(ADDRESS) + "&navigate=yes";
+    whats.href = RSVP_WHATS;
+
+    // ==== Countdown ====
+    const dEl = document.getElementById('d');
+    const hEl = document.getElementById('h');
+    const mEl = document.getElementById('m');
+    const sEl = document.getElementById('s');
+    const dateChip = document.getElementById('dateChip');
+    const timeText = document.getElementById('timeText');
+
+    function makeLocalDate(y, mo, d, h, mi, tzOffsetMin){
+      // Convierte hora local fija (UTC-6) a instante absoluto
+      const utcMs = Date.UTC(y, mo-1, d, h + (tzOffsetMin/60), mi, 0);
+      return new Date(utcMs);
+    }
+    const target = makeLocalDate(WEDDING.year, WEDDING.month, WEDDING.day, WEDDING.hour, WEDDING.minute, WEDDING.tzOffsetMin);
+
+    dateChip.textContent = 'Fecha: 4 de octubre de 2025';
+    timeText.textContent  = '7:00 PM';
+
+    function updateCountdown(){
+      const now = new Date();
+      const diff = target - now;
+      if (diff <= 0){
+        dEl.textContent = hEl.textContent = mEl.textContent = sEl.textContent = '00';
+        if (window.__countdownTimer){ clearInterval(window.__countdownTimer); }
+        return;
+      }
+      const d = Math.floor(diff / (1000*60*60*24));
+      const h = Math.floor((diff / (1000*60*60)) % 24);
+      const m = Math.floor((diff / (1000*60)) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+      dEl.textContent = String(d);
+      hEl.textContent = String(h).padStart(2,'0');
+      mEl.textContent = String(m).padStart(2,'0');
+      sEl.textContent = String(s).padStart(2,'0');
+    }
+    updateCountdown();
+    window.__countdownTimer = setInterval(updateCountdown, 1000);
+
+    // ==== Add to calendar (.ics) ====
+    document.getElementById('btnCalendar').addEventListener('click', () => {
+      const dt = makeLocalDate(WEDDING.year, WEDDING.month, WEDDING.day, WEDDING.hour, WEDDING.minute, WEDDING.tzOffsetMin);
+      const dtEnd = new Date(dt.getTime() + 3*60*60*1000); // 3 horas
+      const fmt = (d)=> d.toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z';
+      const ics = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Boda L&B//ES
+BEGIN:VEVENT
+UID:${Date.now()}@invitacion-lb
+DTSTAMP:${fmt(new Date())}
+DTSTART:${fmt(dt)}
+DTEND:${fmt(dtEnd)}
+SUMMARY:Boda de Lissette y Benjamín
+LOCATION:${ADDRESS}
+DESCRIPTION:¡Te esperamos!
+END:VEVENT
+END:VCALENDAR`;
+      const blob = new Blob([ics], {type: 'text/calendar'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'boda-lissette-benjamin.ics';
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    // ==== RSVP local (prototipo) ====
+    const rsvpForm = document.getElementById('rsvpForm');
+    const rsvpOk = document.getElementById('rsvpOk');
+    rsvpForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(rsvpForm).entries());
+      const bucket = JSON.parse(localStorage.getItem('rsvpSubmissions')||'[]');
+      bucket.push({...data, ts:new Date().toISOString()});
+      localStorage.setItem('rsvpSubmissions', JSON.stringify(bucket));
+      rsvpOk.style.display='block';
+      rsvpForm.reset();
+    });
+
+    // ==== Share ====
+    document.getElementById('btnShare').addEventListener('click', async (e)=>{
+      e.preventDefault();
+      const shareData = { title:'Boda Lissette & Benjamín', text:'Acompáñanos en nuestro gran día ✨', url: window.location.href };
+      try { if(navigator.share){ await navigator.share(shareData); } else { alert('Copia este enlace: '+window.location.href); } } catch(_) {}
+    });
+  </script>
+</body>
+</html>
