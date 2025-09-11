@@ -90,7 +90,7 @@
   <header class="hero">
     <div class="wrap hero-inner">
       <div class="hero-card">
-        <!-- Coloca Novios1.jpg en la misma carpeta que este HTML -->
+        <!-- Novios1.jpg en la RAÍZ del proyecto -->
         <img class="hero-photo" src="Novios1.jpg" alt="Lissette y Benjamín" loading="eager" />
         <div class="title-group">
           <h1 class="name">Lissette <span class="amp">&</span> Benjamín</h1>
@@ -155,13 +155,58 @@
         <h2 class="sec">Nuestra historia</h2>
         <p>Un recorrido por los momentos que nos trajeron hasta aquí.</p>
         <div class="grid cols-2" style="margin-top:10px">
-          <div class="detail"><div class="icon">💫</div><div><strong>Cómo nos conocimos</strong><div class="muted">(Nos conocimos un 4 de septiembre, en un desayuno donde la vida decidió presentarnos.
-Lo que parecía un encuentro sencillo se convirtió en el inicio de una historia que nos trajo hasta este día.
-Desde entonces, cada café compartido, cada risa y cada mirada nos recordó que los mejores planes siempre los escribe el destino.)</div></div></div>
-          <div class="detail"><div class="icon">💍</div><div><strong>La propuesta</strong><div class="muted">(El compromiso fue una sorpresa en nuestro lugar favorito de cada viernes: Viva Vino.
-Allí, entre copas y sonrisas, lo cotidiano se transformó en eterno.
-Ese instante sencillo, en el rincón que siempre nos perteneció, se convirtió en la promesa de caminar juntos para siempre.)</div></div></div>
+          <div class="detail">
+            <div class="icon">💫</div>
+            <div>
+              <strong>Cómo nos conocimos</strong>
+              <div class="muted">
+                Nos conocimos un 4 de septiembre, en un desayuno donde la vida decidió presentarnos.
+                Lo que parecía un encuentro sencillo se convirtió en el inicio de una historia que nos trajo hasta este día.
+                Desde entonces, cada café compartido, cada risa y cada mirada nos recordó que los mejores planes siempre los escribe el destino.
+              </div>
+            </div>
+          </div>
+          <div class="detail">
+            <div class="icon">💍</div>
+            <div>
+              <strong>La propuesta</strong>
+              <div class="muted">
+                El compromiso fue una sorpresa en nuestro lugar favorito de cada viernes: Viva Vino.
+                Allí, entre copas y sonrisas, lo cotidiano se transformó en eterno.
+                Ese instante sencillo, en el rincón que siempre nos perteneció, se convirtió en la promesa de caminar juntos para siempre.
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Galería de noviazgo (fotos previas) -->
+    <section id="galeria-noviazgo">
+      <div class="card">
+        <h2 class="sec">Galería — Nuestro noviazgo</h2>
+        <p>Algunos momentos que nos trajeron hasta aquí.</p>
+        <div class="gallery" id="galN" style="margin-top:10px"></div>
+      </div>
+    </section>
+
+    <!-- Estructura para fotografías del evento -->
+    <section id="galeria-evento">
+      <div class="card">
+        <h2 class="sec">Galería del evento</h2>
+        <p>Después de la boda, aquí podrás ver y descargar tus fotos favoritas.</p>
+
+        <!-- CTA hacia una futura página específica del evento -->
+        <div class="btn-row" style="margin:10px 0 4px">
+          <a class="btn gold" href="evento/index.html">Ver fotografías del evento</a>
+        </div>
+
+        <!-- Contenedor (opcional) si deseas mostrar miniaturas aquí mismo en el futuro -->
+        <div class="gallery" id="galE" style="margin-top:10px"></div>
+
+        <p class="help" style="margin-top:8px">
+          Tip: más adelante podremos filtrar por mesa o familia.
+        </p>
       </div>
     </section>
 
@@ -181,8 +226,6 @@ Ese instante sencillo, en el rincón que siempre nos perteneció, se convirtió 
               <option>No podré asistir</option>
             </select>
           </div>
-          <div class="field">
-           </div>
           <button class="btn gold" type="submit">Enviar RSVP</button>
           <p class="help">Por ahora tu confirmación se guarda localmente (prototipo). Luego conectamos a una base real.</p>
           <div id="rsvpOk" class="help" style="display:none;color:#b7f397">¡Gracias! Hemos registrado tu confirmación.</div>
@@ -190,22 +233,6 @@ Ese instante sencillo, en el rincón que siempre nos perteneció, se convirtió 
             <a class="btn" id="btnWhats" href="#" target="_blank" rel="noopener">Confirmar por WhatsApp</a>
           </div>
         </form>
-      </div>
-    </section>
-
-    <section id="galeria">
-      <div class="card">
-        <h2 class="sec">Galería</h2>
-        <p>Después del evento, aquí podrás ver y descargar tus fotos favoritas.</p>
-        <div class="gallery" style="margin-top:10px">
-          <!-- Foto inicial -->
-          <figure class="ph"><img src="Novios1.jpg" alt="Lissette & Benjamín" loading="lazy"></figure>
-          <!-- Placeholders: agrega más imágenes en esta cuadrícula -->
-          <figure class="ph"><img src="" alt="" loading="lazy"></figure>
-          <figure class="ph"><img src="" alt="" loading="lazy"></figure>
-          <figure class="ph"><img src="" alt="" loading="lazy"></figure>
-        </div>
-        <p class="help" style="margin-top:8px">Tip: podremos filtrar por mesa o familia más adelante.</p>
       </div>
     </section>
 
@@ -331,6 +358,42 @@ END:VCALENDAR`;
       const shareData = { title:'Boda Lissette & Benjamín', text:'Acompáñanos en nuestro gran día ✨', url: window.location.href };
       try { if(navigator.share){ await navigator.share(shareData); } else { alert('Copia este enlace: '+window.location.href); } } catch(_) {}
     });
+
+    // ======= LISTAS DE FOTOS =======
+    // Mantén Novios1.jpg en la RAÍZ como hero principal.
+    // Coloca el resto de fotos del noviazgo en /fotos/noviazgo/ con nombres sin espacios ni acentos.
+    const NOVIAZGO = [
+      'Novios1.jpg',                             // hero (raíz)
+      'fotos/noviazgo/noviazgo-001.jpg',
+      'fotos/noviazgo/noviazgo-002.jpg',
+      'fotos/noviazgo/noviazgo-003.jpg',
+      'fotos/noviazgo/noviazgo-004.jpg',
+      // agrega más según subas: noviazgo-005.jpg, noviazgo-006.jpg, ...
+    ];
+
+    // Para después del evento (estructura lista; puedes dejar vacío por ahora)
+    const EVENTO = [
+      // 'fotos/evento/evento-ceremonia-001.jpg',
+      // 'fotos/evento/evento-recepcion-001.jpg',
+      // 'fotos/evento/evento-mesa-08-001.jpg',
+    ];
+
+    // ======= RENDER DE GALERÍAS =======
+    function renderGallery(containerId, list, altBase){
+      const el = document.getElementById(containerId);
+      if(!el) return;
+      if(!list || list.length === 0){
+        el.innerHTML = '<div class="muted">Pronto añadiremos más recuerdos.</div>';
+        return;
+      }
+      el.innerHTML = list.map((src, i) => `
+        <figure class="ph">
+          <img src="${src}" alt="${altBase} ${i+1}" loading="lazy">
+        </figure>
+      `).join('');
+    }
+    renderGallery('galN', NOVIAZGO, 'Noviazgo Lissette & Benjamín');
+    renderGallery('galE', EVENTO, 'Boda Lissette & Benjamín');
   </script>
 </body>
 </html>
